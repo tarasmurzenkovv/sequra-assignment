@@ -17,8 +17,8 @@ interface DisburseRepository : JpaRepository<DisburseEntity, Int>, DisburseRepos
         select disburse.id as id, 
                 disburse.amount as amount, 
                 o.merchant_id as merchantId from disburse
-        inner join "order" o on o.id = disburse.order_id
-        inner join merchant m on m.id = o.merchant_id
+        join "order" o on o.id = disburse.order_id
+        join merchant m on m.id = o.merchant_id
         where o.merchant_id = :merchantId
         and EXTRACT('week' from o.completed_at) = :weekNumber
         and o.completed_at is not null
@@ -33,8 +33,8 @@ interface DisburseRepository : JpaRepository<DisburseEntity, Int>, DisburseRepos
         """
         select disburse.id as id, 
                 disburse.amount as amount from disburse
-        inner join "order" o on o.id = disburse.order_id
-        inner join merchant m on m.id = o.merchant_id
+        join "order" o on o.id = disburse.order_id
+        join merchant m on m.id = o.merchant_id
         where EXTRACT('week' from o.completed_at) = :weekNumber
         and o.completed_at is not null
     """, nativeQuery = true
