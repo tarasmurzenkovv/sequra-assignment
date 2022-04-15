@@ -1,0 +1,1 @@
+alter table disburse add constraint "order_id" foreign key (order_id) references "order" (id);

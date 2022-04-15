@@ -1,0 +1,1 @@
+alter table shopper add constraint "unique_shopper_email" unique (email);

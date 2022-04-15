@@ -1,0 +1,1 @@
+alter table merchant add constraint "unique_merchant_email" unique (email);
